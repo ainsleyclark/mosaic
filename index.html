@@ -9,12 +9,32 @@
     <style>
         html, body {
             margin: 0;
-            padding: 0;
+            padding: 0; 
+            background-color: black;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid white;
+        }
+        h1, h2 {
+            color: #FFFFFF;
+            text-align: center;
+            margin: 10px;
+            font-weight: 100;
+        }
+        h1 {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <canvas id="mosaic_canvas" width="1000" height="500">
+    <h1>Mosaic</h1>
+    <h2>A Canvas Background for Websites by Ainsley Clark</h2>
+    <canvas id="mosaic_canvas" width="1600" height="700">
         Your browser is too old! Sorry, please install a newer browser.
     </canvas>
 

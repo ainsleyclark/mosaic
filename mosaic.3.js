@@ -90,42 +90,32 @@ class Mosaic {
         this._ctx.clearRect(0, 0, innerWidth, innerHeight);
         this._ctx.fillStyle = this._bg_colour;
         this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
-        
+
         for (let i = 0; i < this.tiles.length; i++) {
             
-           
             if (this.tiles[i].o <= 0) {
                 this.tiles.splice(i, 1);
                 this.pushTiles();
                 
             }
 
-            if (i % (Math.floor(this._tile_qty / 100))  == 0) {
+            if (i % (Math.floor(this._tile_qty / 50))  == 0) {
                 if (this.tiles[i].up == false) {
                     
                 }
                 this.tiles[i].up = false;
-                this.tiles[i].o -= Math.random() / FPS / 20;
+                this.tiles[i].o -= Math.random() / FPS / 10;
     
             }
-
-            //Shadow
-            this._ctx.shadowOffsetX = 4;
-            this._ctx.shadowOffsetY = 4;
-            this._ctx.shadowBlur = 4;
-            this._ctx.shadowColor="black";
-
-
+            
             this._ctx.fillStyle = "rgba(" + hexToRgb(this.tiles[i].c) + this.tiles[i].o + ")";
             this._ctx.fillRect(this.tiles[i].x, this.tiles[i].y, this._tile_size, this._tile_size);
-            
+            //this._ctx.rotate(45*Math.PI/180);
             if(this._tile_stroke > 0) {
                 this._ctx.strokeStyle = "rgba(" + hexToRgb(this._tile_stroke_colour) + this.tiles[i].o + ")";
                 this._ctx.lineWidth  = this._tile_stroke;
                 this._ctx.strokeRect(this.tiles[i].x, this.tiles[i].y, this._tile_size, this._tile_size);  
             }
-
-            //this._ctx.rotate(45*Math.PI/180);
 
         }
 
@@ -172,7 +162,7 @@ var grid = new Mosaic({
     canvas_id: "mosaic_canvas", 
     bg_colour: "#000000", 
     tile_size: 50, 
-    tile_border: 0, 
+    tile_border: 5, 
     tile_qty: 500, 
     tile_stroke: 0,
     tile_stroke_colour: ['#FFFFFF'],
